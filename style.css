@@ -1,4 +1,33 @@
-.cards {
-    width: 150px;
-    height: 150px;
+
+header {
+    background-color: lightgrey;
+    align-self: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: xx-large;
+    text-align:center;
+    padding-top: 40px;
+    width: auto;
+    height: 100px;
+}
+
+.card-div {
+    border: 10%;
+    position: relative;
+    width: 25%;
+    float: left;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.card-image {
+    max-width: 75vw;
+    max-height: 25vw;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+
+
+.likeBtn {
+    position: relative;
 }
