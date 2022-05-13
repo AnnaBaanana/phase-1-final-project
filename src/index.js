@@ -33,9 +33,11 @@ function renderNFT(card) {
         console.log(e)
         if (likeCount.className==="hidden") {
             likeCount.textContent++
+            likeBtn.textContent="Liked!"
             likeCount.className ="liked"
             } else {
             likeCount.textContent--
+            likeBtn.textContent="Like!"
             likeCount.className="hidden"}})
 
     cardDiv.append(image, likeBtn, likeCount)
