@@ -12,14 +12,16 @@ header {
 
 .card-div {
     border: 10%;
-    position: relative;
     width: 25%;
     float: left;
-    padding-top: 10px;
-    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .card-image {
+    position: relative;
     max-width: 75vw;
     max-height: 25vw;
     padding-top: 10px;
@@ -27,7 +29,14 @@ header {
 }
 
 
-
 .likeBtn {
     position: relative;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+* {
+    align-items: center;
 }
