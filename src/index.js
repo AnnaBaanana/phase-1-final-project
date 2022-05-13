@@ -1,20 +1,11 @@
 const url1 = "https://api.opensea.io/api/v1/assets?format=json"
 const url="http://localhost:3000/assets"
 
-function domLoaded() {
-    document.addEventListener("DOMContentLoaded", () => {
-        console.log("DOM Loaded")
-        getNFT()
-        renderNFT()
-        //revealMostLiked()
-    })
-}
-
 function getNFT() {
     const cardHolder = document.querySelector("#cardlist")
     console.log(cardHolder)
     fetch(url).then(res => res.json()).then(data => {
-        console.log(data.assets)
+        console.log(data)
         data.forEach(card => cardHolder.append(renderNFT(card)))
     })
 }
@@ -46,14 +37,58 @@ function renderNFT(card) {
     return cardDiv
 }
 
+function handleForm() {
+    const form = document.querySelector('#addCard')
+    console.log(form)
+    form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        console.log(e)
+        const cardObj = {
+            image_url: e.target[0].value,
+            name: e.target[1].value,
+            description: e.target[2].value,
+            likes: 0
+        }
+        console.log(cardObj)
+        console.log(url)
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type':'application-json',
+                'Accept':'application-json'},
+            body: JSON.stringify({
+                "image_url": e.target[0].value,
+                "name": e.target[1].value,
+                "likes": 0,
+                "description": e.target[2].value
+            })
+        }).then(res => res.json()).then(data => console.log(data))
+    })}
+ 
 function revealMostLiked() {
-    fetch(url).then(res => res.json()).then(data => {
-        console.log(data)
-        const likes = data.assets.map(card => card.likes)
-        console.log(likes)
+    const revealBtn = document.querySelector("#reveal")
+    revealBtn.addEventListener('click', (e)=> {
+        console.log(e)
+        console.log(revealBtn)
+        fetch(url).then(res => res.json()).then(data => {
+            console.log(data)
+            const mostLikes = Math.max(...data.map(card => card.likes))
+            const mostLiked = data.find(el => el.likes==mostLikes)
+            console.log(mostLikes)
+            console.log(mostLiked)
+            const showMostLiked = document.querySelector("#currentwinner")
+            showMostLiked.append(renderNFT(mostLiked))
     })
+})
 }
 
-
+function domLoaded() {
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log("DOM Loaded")
+        handleForm()
+        getNFT()
+        revealMostLiked()
+    })
+}
 
 domLoaded()
