@@ -1,10 +1,12 @@
-const url = "https://api.opensea.io/api/v1/assets?format=json"
+const url1 = "https://api.opensea.io/api/v1/assets?format=json"
+const url="http://localhost:3000/assets"
 
 function domLoaded() {
     document.addEventListener("DOMContentLoaded", () => {
         console.log("DOM Loaded")
         getNFT()
         renderNFT()
+        //revealMostLiked()
     })
 }
 
@@ -13,7 +15,7 @@ function getNFT() {
     console.log(cardHolder)
     fetch(url).then(res => res.json()).then(data => {
         console.log(data.assets)
-        data.assets.forEach(card => cardHolder.append(renderNFT(card)))
+        data.forEach(card => cardHolder.append(renderNFT(card)))
     })
 }
 
@@ -27,7 +29,7 @@ function renderNFT(card) {
     likeBtn.textContent = "Like!"
     likeBtn.className = "like"
     const likeCount = document.createElement('span')
-    likeCount.textContent =  0
+    likeCount.textContent = card.likes
     likeCount.className = "hidden"
     likeBtn.addEventListener("click", (e)=> {
         console.log(e)
@@ -43,5 +45,15 @@ function renderNFT(card) {
     cardDiv.append(image, likeBtn, likeCount)
     return cardDiv
 }
+
+function revealMostLiked() {
+    fetch(url).then(res => res.json()).then(data => {
+        console.log(data)
+        const likes = data.assets.map(card => card.likes)
+        console.log(likes)
+    })
+}
+
+
 
 domLoaded()
