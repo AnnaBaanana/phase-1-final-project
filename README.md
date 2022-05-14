@@ -6,6 +6,9 @@ that will showcase a collection of NFTs and will allow users
 to like and unlike the NFTs to show their appreciation for the artists.
 Additionally, the users will be able to see what the current 
 most-appreciated/liked NFT is.
+Original NFT data was acquired from this API 
+https://api.opensea.io/api/v1/assets?format=json
+and added to the json server backend.
 
 **Goals:**
 Build a one-page application that:
