@@ -43,4 +43,4 @@ This application has several features
 
 **Contact **
 Anna Shulyak as@10873@nuy.edu
-Project Link: 
+Project Link: https://github.com/AnnaBaanana/phase-1-final-project.git
