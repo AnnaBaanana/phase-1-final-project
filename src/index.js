@@ -1,4 +1,6 @@
-const url1 = "https://api.opensea.io/api/v1/assets?format=json"
+//original datasource
+const urlAPI = "https://api.opensea.io/api/v1/assets?format=json"
+//my json-server url
 const url="http://localhost:3000/assets"
 
 function getNFT() {
@@ -47,8 +49,38 @@ function renderNFT(card) {
     cardDiv.append(image, likeBtn, likeCount)
     return cardDiv
 }
+ 
+function revealMostLiked() {
+    const revealBtn = document.querySelector("#reveal")
+    revealBtn.addEventListener('click', (e)=> {
+        console.log(e)
+        console.log(revealBtn)
+        fetch(url).then(res => res.json()).then(data => {
+            console.log(data)
+            const mostLikes = Math.max(...data.map(card => card.likes))
+            const mostLiked = data.find(el => el.likes==mostLikes)
+            console.log(mostLikes)
+            console.log(mostLiked)
+            revealBtn.textContent ="Refresh"
+            const likeCount = document.querySelector("#likeCount")
+            const showMostLiked = document.querySelector("#currentwinner")
+            showMostLiked.append(renderNFT(mostLiked))
+    })
+})
+}
 
-function handleForm() {
+function domLoaded() {
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log("DOM Loaded")
+        getNFT()
+        revealMostLiked()
+    })
+}
+
+domLoaded()
+
+
+/*function handleForm() {
     const form = document.querySelector('#addCard')
     console.log(form)
     form.addEventListener("submit", (e) => {
@@ -74,36 +106,4 @@ function handleForm() {
                 "description": e.target[2].value
             })
         }).then(res => res.json()).then(data => console.log(data))
-    })}
- 
-function revealMostLiked() {
-    const revealBtn = document.querySelector("#reveal")
-    revealBtn.addEventListener('click', (e)=> {
-        console.log(e)
-        console.log(revealBtn)
-        fetch(url).then(res => res.json()).then(data => {
-            console.log(data)
-            const mostLikes = Math.max(...data.map(card => card.likes))
-            const mostLiked = data.find(el => el.likes==mostLikes)
-            console.log(mostLikes)
-            console.log(mostLiked)
-            revealBtn.className ="hidden"
-            const likeCount = document.querySelector("#likeCount")
-            console.log(likeCount)
-            likeCount.className=""
-            const showMostLiked = document.querySelector("#currentwinner")
-            showMostLiked.append(renderNFT(mostLiked))
-    })
-})
-}
-
-function domLoaded() {
-    document.addEventListener("DOMContentLoaded", () => {
-        console.log("DOM Loaded")
-        handleForm()
-        getNFT()
-        revealMostLiked()
-    })
-}
-
-domLoaded()
+    })}*/
