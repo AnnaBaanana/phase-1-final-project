@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="eng">
-    <head>
-        <title>NFT Collection</title>
-        <script type="text/javascript" src="src/index.js"></script>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <header>
-        Vote for your favorite NFT!<br>
-        Support NFT artists!
-    </header>
-    <body>
-        
-        <section class="section">
-            <container id="form-holder">
-                <h4>Add Your NFT Here</h4>
-                <form id="addCard">
-                    <label for="image">Image URL</label>
-                    <input type="text" name="image" id="image" placeholder="Add Image URL"><br>
-                    <label for="author">Author Name</label>
-                    <input type="text" name="author" id="author" placeholder="Add Author Name"><br>
-                    <label for="desc">Image Description</label>
-                    <input type="text" name="desc" id="desc" placeholder="Add Description"><br>
-                    <input type="submit" id="submit" value="Add NFT">
-                </form>
-            </container>
-        </section>
 
-        <section class="section">
-            <container id="card-container">
-                <ul id="cardlist">    
-                </ul>
-            </container>
-        </section>
+<head>
+    <title>NFT Collection</title>
+    <script type="text/javascript" src="src/index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    Vote for your favorite NFTs!<br>
+    Support NFT artists!
+</header>
+
+<body>
+    <div>
+        <container id="form-holder">
+            <h4>Add Your NFT Here</h4>
+            <form id="addCard">
+                <label for="image">Image URL</label>
+                <input type="text" id="image" name="image" placeholder="Add Image URL"><br>
+                <label for="name">Image Name</label>
+                <input type="text" id="name" name="name" placeholder="Add Image Name"><br>
+                <label for="desc">Image Description</label>
+                <input type="text" id="desc" name="desc" placeholder="Add Description"><br>
+                <input type="submit" id="submit" name="submit" value="Add NFT">
+            </form>
+        </container>
+    </div>
+
+    <section class="cards">
+        <container id="card-container">
+            <ul id="cardlist">
+            </ul>
+        </container>
+    </section>
+
+    <div class="divider">
         
-    </body>
+    </div>
+
+    <div>
+        <container id="ask-most-liked">
+            <h4>And the current most liked NFT is...</h4>
+            <button type="button" id="reveal">Reveal!</button>
+            <container id="currentwinner"></container>
+        </container>
+    </div>
+
+</body>
+
 </html>
