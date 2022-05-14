@@ -13,6 +13,7 @@ function getNFT() {
 function renderNFT(card) {
     const cardDiv = document.createElement("div")
     cardDiv.className = "card-div"
+    cardDiv.id = card.id
     const image = document.createElement('img')
     image.className = "card-image"
     image.src = card.image_url
@@ -21,6 +22,7 @@ function renderNFT(card) {
     likeBtn.className = "like"
     const likeCount = document.createElement('span')
     likeCount.textContent = card.likes
+    likeCount.id = "likeCount"
     likeCount.className = "hidden"
     likeBtn.addEventListener("click", (e)=> {
         console.log(e)
@@ -30,8 +32,17 @@ function renderNFT(card) {
             likeCount.className ="liked"
             } else {
             likeCount.textContent--
-            likeBtn.textContent="Like!"
-            likeCount.className="hidden"}})
+            likeBtn.textContent="Unliked"
+            likeCount.className="hidden"}
+        fetch(`${url}/${card.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type":"Application/json",
+                "Accept":"Application/json"
+            },
+            body: JSON.stringify({"likes": likeCount.textContent})
+        }).then(res=>res.json()).then(data => console.log(data))
+        })
 
     cardDiv.append(image, likeBtn, likeCount)
     return cardDiv
@@ -76,6 +87,10 @@ function revealMostLiked() {
             const mostLiked = data.find(el => el.likes==mostLikes)
             console.log(mostLikes)
             console.log(mostLiked)
+            revealBtn.className ="hidden"
+            const likeCount = document.querySelector("#likeCount")
+            console.log(likeCount)
+            likeCount.className=""
             const showMostLiked = document.querySelector("#currentwinner")
             showMostLiked.append(renderNFT(mostLiked))
     })
