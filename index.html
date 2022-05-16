@@ -13,19 +13,17 @@
 
 <body>
 
-    <div>
-        <container id="form-holder">
-            <h4>Add Your NFT Here</h4>
-            <form id="addCard">
-                <label for="image">Image URL</label>
-                <input type="text" id="image" name="image" placeholder="Add Image URL"><br>
-                <label for="name">Image Name</label>
-                <input type="text" id="name" name="name" placeholder="Add Image Name"><br>
-                <label for="desc">Image Description</label>
-                <input type="text" id="desc" name="desc" placeholder="Add Description"><br>
-                <input type="submit" id="submit" name="submit" value="Add NFT">
-            </form>
-        </container>
+    <div id="form-holder">
+        <h4>Upload Your NFT</h4>
+        <form id="addCard">
+            <label for="image">Image URL</label>
+            <input type="text" id="image" name="image" placeholder="Add Image URL"><br>
+            <label for="name">Image Name</label>
+            <input type="text" id="name" name="name" placeholder="Add Image Name"><br>
+            <label for="desc">Image Description</label>
+            <input type="text" id="desc" name="desc" placeholder="Add Description"><br>
+            <input type="submit" id="submit" name="submit" value="Add NFT">
+        </form>
     </div>
 
     <section class="cards">
@@ -35,13 +33,14 @@
         </container>
     </section>
 
-    <div>
+    <section>
         <container id="ask-most-liked">
             <h4>And the current most liked NFT is...</h4>
             <button type="button" id="reveal">Reveal!</button>
             <container id="currentwinner"></container>
         </container>
-    </div>
+    </section>
+
 
 </body>
 

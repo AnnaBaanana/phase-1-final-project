@@ -10,9 +10,8 @@ header {
     height: 100px;
 }
 
-#top {
-    width: 33%;
-    float: left;
+#form-holder {
+    text-align: center;
 }
 
 #most-liked {
@@ -22,12 +21,7 @@ header {
 #ask-most-liked {
     width: auto;
     margin: auto;
-}
-
-.section {
-    align-content: center;
-    margin-left: 20px;
-    margin-right: 20px;
+    text-align: center;
 }
 
 .card-div {
@@ -48,27 +42,12 @@ header {
     padding-right: 10px;
 }
 
-
 .likeBtn {
     position: relative;
 }
 
 .hidden {
     visibility: hidden;
-}
-
-* {
-    align-items: center;
-}
-
-.section #form-holder {
-    border: 10%;
-    margin-left: 40px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 15px;
-    padding-left: 15px;
-
 }
 
 #reveal {
