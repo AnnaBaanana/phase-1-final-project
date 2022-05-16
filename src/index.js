@@ -47,8 +47,7 @@ function renderNFT(card) {
             body: JSON.stringify({"likes": likeCount.textContent})
         }).then(res=>res.json()).then(data => console.log(data))
         })
-
-    cardDiv.append(image, likeBtn, likeCount)
+    cardDiv.append(image,likeBtn, likeCount)
     return cardDiv
 }
 
@@ -89,17 +88,10 @@ function handleForm() {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"},
-
-            body: JSON.stringify(cardObj
-                /*{
-                "image_url": e.target[0].value,
-                "name": e.target[1].value,
-                "likes": 0,
-                "description": e.target[2].value
-            }
-            */)
-        }).then(res => res.json()).then(data =>
-            console.log(data))
+            body: JSON.stringify(cardObj)
+        }).then(res => res.json()).then(data => {
+            console.log(data)
+            renderNFT(cardObj)})
     })
 }
 
