@@ -3,11 +3,8 @@ const urlAPI = "https://api.opensea.io/api/v1/assets?format=json"
 //my json-server url
 const url="http://localhost:3000/assets"
 
-const cardHolder = document.querySelector("#cardlist")
-
 function getNFT() {
     const cardHolder = document.querySelector("#cardlist")
-    //console.log(cardHolder)
     fetch(url).then(res => res.json()).then(data => {
         console.log(data)
         data.forEach(card => cardHolder.append(renderNFT(card)))
@@ -41,9 +38,7 @@ function renderNFT(card) {
         fetch(`${url}/${card.id}`, {
             method: "PATCH",
             headers: {
-                "Content-type":"Application/json",
-                "Accept":"Application/json"
-            },
+                "Content-type":"Application/json" },
             body: JSON.stringify({"likes": likeCount.textContent})
         }).then(res=>res.json()).then(data => console.log(data))
         })
@@ -55,14 +50,9 @@ function renderNFT(card) {
 function revealMostLiked() {
     const revealBtn = document.querySelector("#reveal")
     revealBtn.addEventListener('click', (e)=> {
-        //console.log(e)
-        //console.log(revealBtn)
         fetch(url).then(res => res.json()).then(data => {
-            //console.log(data)
             const mostLikes = Math.max(...data.map(card => card.likes))
             const mostLiked = data.find(el => el.likes==mostLikes)
-            //console.log(mostLikes)
-            //console.log(mostLiked)
             revealBtn.className ="hidden"
             const likeCount = document.querySelector("#likeCount")
             const showMostLiked = document.querySelector("#currentwinner")
@@ -92,13 +82,12 @@ function handleForm() {
             body: JSON.stringify(cardObj)
         }).then(res => res.json()).then(data => {
             console.log(data)
-            renderNFT(data)})
+            document.querySelector('#card-container').append((renderNFT(data)))})
     })
 }
 
 function domLoaded() {
     document.addEventListener("DOMContentLoaded", () => {
-        //console.log("DOM Loaded")
         getNFT()
         handleForm()
         revealMostLiked()
