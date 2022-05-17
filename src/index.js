@@ -84,6 +84,7 @@ function handleForm() {
             "likes": 0
         }
         console.log(cardObj)
+        form.reset()
         fetch(url, {
             method: "POST",
             headers: {
@@ -91,7 +92,7 @@ function handleForm() {
             body: JSON.stringify(cardObj)
         }).then(res => res.json()).then(data => {
             console.log(data)
-            renderNFT(cardObj)})
+            renderNFT(data)})
     })
 }
 
