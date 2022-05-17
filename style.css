@@ -12,7 +12,25 @@ header {
 
 #form-holder {
     text-align: center;
+    float: left;
+    width: 50%;
+    height: 300px;
 }
+
+#result {
+    text-align: center;
+    float: left;
+    width: 50%;
+    height: 300px;
+}
+
+#result .card-image {
+    max-height: 150px;
+    max-width: 150px;
+    text-align: center;
+
+}
+
 
 #most-liked {
     content-visibility: hidden;
@@ -26,7 +44,7 @@ header {
 .card-div {
     border: 10%;
     width: 30%;
-    float: left;
+    float: left; 
     padding-top: 15px;
     padding-bottom: 15px;
     padding-right: 15px;

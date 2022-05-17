@@ -17,27 +17,27 @@
         <h4>Upload Your NFT</h4>
         <form id="addCard">
             <label for="image">Image URL</label>
-            <input type="text" id="image" name="image" placeholder="Add Image URL"><br>
+            <input type="text" id="image" name="image" placeholder="Add Image URL"><br><br>
             <label for="name">Image Name</label>
-            <input type="text" id="name" name="name" placeholder="Add Image Name"><br>
+            <input type="text" id="name" name="name" placeholder="Add Image Name"><br><br>
             <label for="desc">Image Description</label>
-            <input type="text" id="desc" name="desc" placeholder="Add Description"><br>
+            <input type="text" id="desc" name="desc" placeholder="Add Description"><br><br>
             <input type="submit" id="submit" name="submit" value="Add NFT">
         </form>
+    </section>
+
+    <section id="result">
+        <container id="ask-most-liked">
+            <h4>And the current most liked NFT is...</h4>
+            <button type="button" id="reveal">Reveal!</button>
+            <container id="currentwinner"></container>
+        </container>
     </section>
 
     <section class="cards">
         <container id="card-container">
             <ul id="cardlist">
             </ul>
-        </container>
-    </section>
-
-    <section>
-        <container id="ask-most-liked">
-            <h4>And the current most liked NFT is...</h4>
-            <button type="button" id="reveal">Reveal!</button>
-            <container id="currentwinner"></container>
         </container>
     </section>
 
