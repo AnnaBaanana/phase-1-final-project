@@ -3,6 +3,9 @@ const urlAPI = "https://api.opensea.io/api/v1/assets?format=json"
 //my json-server url
 const url="http://localhost:3000/assets"
 
+//delete this
+const dataM = []
+
 function getNFT() {
     const cardHolder = document.querySelector("#cardlist")
     fetch(url).then(res => res.json()).then(data => {
@@ -22,11 +25,10 @@ function renderNFT(card) {
     likeBtn.textContent = "Like!"
     likeBtn.className = "like"
     const likeCount = document.createElement('span')
-    likeCount.textContent = card.likes
+    likeCount.textContent = ` ${card.likes}`
     likeCount.id = "likeCount"
     likeCount.className = "hidden"
     likeBtn.addEventListener("click", (e)=> {
-        console.log(e)
         if (likeCount.className==="hidden") {
             likeCount.textContent++
             likeBtn.textContent="Liked!"
@@ -54,9 +56,10 @@ function revealMostLiked() {
             const mostLikes = Math.max(...data.map(card => card.likes))
             const mostLiked = data.find(el => el.likes==mostLikes)
             revealBtn.className ="hidden"
-            const likeCount = document.querySelector("#likeCount")
+            const timesLiked = document.querySelector("#timesLiked")
             const showMostLiked = document.querySelector("#currentwinner")
             showMostLiked.append(renderNFT(mostLiked))
+            document.querySelector("#likeCount").className="hidden"
     })
 })
 }
@@ -82,7 +85,7 @@ function handleForm() {
             body: JSON.stringify(cardObj)
         }).then(res => res.json()).then(data => {
             console.log(data)
-            document.querySelector('#card-container').append((renderNFT(data)))})
+            document.querySelector('#card-container').append((renderNFT(data)))}).catch(error => alert("Something went wrong! Try again please."))
     })
 }
 
@@ -95,5 +98,7 @@ function domLoaded() {
 }
 
 domLoaded()
+
+
 
 
