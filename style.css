@@ -24,6 +24,11 @@ header {
     height: 280px;
 }
 
+#currentwinner {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 #ask-most-liked .card-div {
     float: center;
 }
